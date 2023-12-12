@@ -7,7 +7,7 @@ export default defineConfig({
 	build: {
 		lib: {
 			entry: path.resolve(__dirname, "src/index.js"),
-			name: "lorem-ipsum-generator",
+			name: "@pablodz/lorem-ipsum-generator",
 			fileName: (format) => `lorem-ipsum-generator.${format}.js`,
 		},
 		rollupOptions: {

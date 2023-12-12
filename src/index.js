@@ -1,7 +1,7 @@
-import LoremIpsumGenerator from "./LoremIpsumGenerator.vue";
+import LoremIpsumGenerator from "./components/LoremIpsumGenerator.vue";
 
 export default {
 	install(app, options) {
-		app.component("lorem-ipsum-generator", LoremIpsumGenerator);
+		app.component("LoremIpsumGenerator", LoremIpsumGenerator);
 	},
 };
