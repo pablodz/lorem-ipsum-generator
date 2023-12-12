@@ -1,19 +1,29 @@
 {
-  "name": "my-vue-app",
-  "private": true,
-  "version": "0.0.0",
-  "type": "module",
-  "scripts": {
-    "clean": "rm -rf dist",
-    "dev": "bunx --bun vite",
-    "build": "bunx --bun vite build",
-    "preview": "bunx --bun vite preview"
+  "name": "lorem-ipsum-generator",
+  "version": "0.0.1",
+  "files": [
+    "dist"
+  ],
+  "main": "dist/lorem-ipsum-generator.umd.js",
+  "module": "dist/lorem-ipsum-generator.esm.js",
+  "exports": {
+    ".": {
+      "import": "./dist/lorem-ipsum-generator.esm.js",
+      "require": "./dist/lorem-ipsum-generator.umd.js"
+    }
   },
   "dependencies": {
+    "lorem-ipsum": "^2.0.8",
     "vue": "^3.3.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",
     "vite": "^5.0.0"
+  },
+  "scripts": {
+    "clean": "rm -rf dist node_modules",
+    "dev": "bunx --bun vite",
+    "build": "bunx --bun vite build",
+    "preview": "vite preview"
   }
 }
