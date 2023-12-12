@@ -19,7 +19,7 @@ jobs:
 
       - name: "Install npm on bun"
         run: |
-          bun install npm
+          bun add npm
 
       - name: Set npm registry and authentication
         env:
