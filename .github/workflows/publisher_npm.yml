@@ -4,6 +4,11 @@ on:
   push:
     branches:
       - main
+  workflow_dispatch:
+    inputs:
+      otp:
+        description: Enter OTP
+        required: true
 
 jobs:
   build-and-publish:
@@ -33,8 +38,7 @@ jobs:
 
       - name: Publish to npm
         run: |
-          echo "Please enter the OTP:"
-          read -r OTP
+          OTP=${{ github.event.inputs.otp }}
           bun run npm publish --access public --verbose --otp $OTP || (echo "Error publishing to npm, see the error log below:" && cat $(ls -1t /home/runner/.npm/_logs/*-debug-0.log | head -n 1) && exit 1)
 
       - name: Install and build
