@@ -33,7 +33,7 @@ jobs:
 
       - name: List all files
         run: |
-          find . -type f
+          find . -type f -not -path "./node_modules/*" -not -path "./.git/*"
 
       - name: Publish to npm
         run: |
