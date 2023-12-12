@@ -40,6 +40,13 @@ jobs:
         run: |
           find . -type f -not -path "./node_modules/*" -not -path "./.git/*"
 
+      - name: Add subversion on package.json version to "version+date" with shell
+        run: |
+          echo "Current version: $(cat package.json | jq -r '.version')"
+          echo "New version: $(cat package.json | jq -r '.version')-$(date +%Y%m%d%H%M%S)"
+          sed -i "s/\"version\": \".*\"/\"version\": \"$(cat package.json | jq -r '.version')-$(date +%Y%m%d%H%M%S)\"/g" package.json
+          echo "New version: $(cat package.json | jq -r '.version')"
+
       - name: Publish to npm
         run: |
           bun run npm publish --access public --verbose || (echo "Error publishing to npm, see the error log below:" && cat $(ls -1t /home/runner/.npm/_logs/*-debug-0.log | head -n 1) && exit 1)
