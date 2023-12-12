@@ -29,8 +29,6 @@ jobs:
             echo "NPM_TOKEN is empty. Exiting."
             exit 1
           fi
-          bun run npm config set registry https://registry.npmjs.org/
-          bun run npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ./npmrc
 
       - name: Install and build
