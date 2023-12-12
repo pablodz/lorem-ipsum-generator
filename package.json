@@ -8,28 +8,29 @@
     "url": "git+https://github.com/pablodz/lorem-ipsum-generator.git"
   },
   "files": [
-    "dist"
+    "dist/*"
   ],
-  "main": "dist/lorem-ipsum-generator.umd.js",
-  "module": "dist/lorem-ipsum-generator.esm.js",
-  "exports": {
-    ".": {
-      "import": "./dist/lorem-ipsum-generator.esm.js",
-      "require": "./dist/lorem-ipsum-generator.umd.js"
-    }
-  },
+  "type": "module",
+  "main": "src/library.js",
+  "module": "dist/library.mjs",
   "dependencies": {
     "lorem-ipsum": "^2.0.8",
     "vue": "^3.3.8"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^4.5.0",
+    "rollup": "^4.8.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-vue": "^6.0.0",
     "vite": "^5.0.0"
+  },
+  "peerDependencies": {
+    "vue": "^3.3.8"
   },
   "scripts": {
     "clean": "rm -rf dist node_modules",
     "dev": "bunx --bun vite",
-    "build": "bunx --bun vite build",
-    "preview": "bunx --bun vite preview"
+    "preview": "bunx --bun vite preview",
+    "build": "rollup -c"
   }
 }

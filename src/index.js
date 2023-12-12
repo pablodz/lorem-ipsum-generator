@@ -1,7 +1,11 @@
-import LoremIpsumGenerator from "./components/LoremIpsumGenerator.vue";
+import components  from "./components";
 
-export default {
-	install(app, options) {
-		app.component("LoremIpsumGenerator", LoremIpsumGenerator);
-	},
-};
+const plugin={
+	install(app){
+		Object.entries(components).forEach(([name, component]) => {
+			app.component(name, component);
+		});
+	}
+}
+
+export default plugin;

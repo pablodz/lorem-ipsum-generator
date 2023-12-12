@@ -8,6 +8,7 @@
 import { LoremIpsum } from "lorem-ipsum";
 
 export default {
+	name: "LoremIpsumGenerator",
 	props: {
 		textLength: {
 			type: Number,
