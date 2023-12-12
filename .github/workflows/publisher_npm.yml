@@ -16,14 +16,14 @@ jobs:
       - uses: oven-sh/setup-bun@v1
         with:
           bun-version: latest # or "latest", "canary", <sha>
-        env:
-          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
 
       - name: "Install npm on bun"
         run: |
           bun install npm
 
       - name: Set npm registry and authentication
+        env:
+          NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         run: |
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN" > ~/.npmrc
           echo "//registry.npmjs.org/:_authToken=$NPM_TOKEN"
