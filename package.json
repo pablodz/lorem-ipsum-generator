@@ -1,6 +1,12 @@
 {
-  "name": "lorem-ipsum-generator",
-  "version": "0.0.1",
+  "name": "@zurmad/lorem-ipsum-generator",
+  "version": "1.0.0",
+  "author": "Pablo",
+  "description": "",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/pablodz/lorem-ipsum-generator"
+  },
   "files": [
     "dist"
   ],
@@ -13,7 +19,7 @@
     }
   },
   "dependencies": {
-    "lorem-ipsum": "^2.0.8",
+    "npm": "^10.2.5",
     "vue": "^3.3.8"
   },
   "devDependencies": {
@@ -24,6 +30,7 @@
     "clean": "rm -rf dist node_modules",
     "dev": "bunx --bun vite",
     "build": "bunx --bun vite build",
-    "preview": "vite preview"
+    "preview": "bunx --bun vite preview",
+    "publish": "bun run npm publish"
   }
 }
