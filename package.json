@@ -1,11 +1,11 @@
 {
-  "name": "@zurmad/lorem-ipsum-generator",
-  "version": "1.0.0",
+  "name": "@pablodz/lorem-ipsum-generator",
+  "version": "1.0.1",
   "author": "Pablo",
   "description": "",
   "repository": {
     "type": "git",
-    "url": "https://github.com/pablodz/lorem-ipsum-generator"
+    "url": "git+https://github.com/pablodz/lorem-ipsum-generator.git"
   },
   "files": [
     "dist"
@@ -31,6 +31,6 @@
     "dev": "bunx --bun vite",
     "build": "bunx --bun vite build",
     "preview": "bunx --bun vite preview",
-    "publish": "bun run npm publish"
+    "publish": "bun run npm publish --access public"
   }
 }
