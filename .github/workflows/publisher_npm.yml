@@ -8,18 +8,25 @@ on:
 jobs:
   build-and-publish:
     runs-on: ubuntu-latest
+
     steps:
-      - uses: actions/checkout@v4
+      - name: Checkout Repository
+        uses: actions/checkout@v4
 
-      - uses: oven-sh/setup-bun@v1
+      - name: Install Node.js and npm
+        uses: actions/setup-node@v3
         with:
-          bun-version: latest # or "latest", "canary", <sha>
+          node-version: 14
 
-      - uses: actions/setup-node@v3
-        with:
-          node-version: "20"
-      - run: npm ci
-      - run: npm test
-      - uses: JS-DevTools/npm-publish@v3
-        with:
-          token: ${{ secrets.NPM_TOKEN }}
+      - name: Install Dependencies
+        run: |
+          npm install
+
+      - name: Set npm registry and authentication
+        run: |
+          npm config set registry "https://registry.npmjs.org"
+          echo "//registry.npmjs.org/:_authToken=\${NPM_TOKEN}" > ~/.npmrc
+
+      - name: Publish to npm
+        run: |
+          npm publish
