@@ -33,7 +33,7 @@ jobs:
 
       - name: List all files
         run: |
-          ls -I .git -I node_modules -I dist
+          find . -type f
 
       - name: Publish to npm
         run: |
