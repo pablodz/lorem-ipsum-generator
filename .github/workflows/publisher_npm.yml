@@ -13,22 +13,21 @@ jobs:
       - name: Checkout Repository
         uses: actions/checkout@v4
 
-      - name: Install Node.js and npm
-        uses: actions/setup-node@v3
+      - uses: oven-sh/setup-bun@v1
+        with:
+          bun-version: latest # or "latest", "canary", <sha>
         env:
           TOKEN: ${{ secrets.NPM_TOKEN }}
-        with:
-          node-version: 20
 
-      - name: Install Dependencies
+      - name: "Install npm on bun"
         run: |
-          npm install
+          bun install npm
 
       - name: Set npm registry and authentication
         run: |
-          npm config set registry "https://registry.npmjs.org"
           echo "//registry.npmjs.org/:_authToken=${TOKEN}" > ~/.npmrc
 
       - name: Publish to npm
         run: |
-          npm publish --access public || (echo "Error publishing to npm, see the error log below:" && cat $(ls -1t /home/runner/.npm/_logs/*-debug-0.log | head -n 1) && exit 1)
+          bun run build 
+          bun run publish || (echo "Error publishing to npm, see the error log below:" && cat $(ls -1t /home/runner/.npm/_logs/*-debug-0.log | head -n 1) && exit 1)
