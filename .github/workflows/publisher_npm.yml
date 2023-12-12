@@ -29,6 +29,8 @@ jobs:
             echo "NPM_TOKEN is empty. Exiting."
             exit 1
           fi
+
+          echo "TOKEN NEEDS TO BE AUTOMATIC, NOT PUBLISHER NOR READ"
           bun run npm config set //registry.npmjs.org/:_authToken $NPM_TOKEN
 
       - name: Install and build
@@ -43,9 +45,11 @@ jobs:
       - name: Add subversion on package.json version to "version+date" with shell
         run: |
           echo "Current version: $(cat package.json | jq -r '.version')"
-          echo "New version: $(cat package.json | jq -r '.version')-$(date +%Y%m%d%H%M%S)"
-          sed -i "s/\"version\": \".*\"/\"version\": \"$(cat package.json | jq -r '.version')-$(date +%Y%m%d%H%M%S)\"/g" package.json
+          new_version="$(cat package.json | jq -r '.version')-$(date +%Y%m%d%H%M%S)"
+          echo "New version: $new_version"
+          sed -i "s/\"version\": \".*\"/\"version\": \"$new_version\"/g" package.json
           echo "New version: $(cat package.json | jq -r '.version')"
+          echo "version-$(git branch --show-current | cut -c 1-10)-$(date +%Y%m%d%H%M%S)" > version.txt
 
       - name: Publish to npm
         run: |
