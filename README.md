@@ -1,1 +1,10 @@
-# vuejs3-proj-2
+# Vue 3 + Vite
+
+
+
+```bash
+bun install
+
+bun run dev
+
+```
