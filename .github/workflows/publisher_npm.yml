@@ -25,8 +25,8 @@ jobs:
 
       - name: Set npm registry and authentication
         run: |
-          echo "//registry.npmjs.org/:_authToken=${TOKEN}" > ~/.npmrc
-          echo "//registry.npmjs.org/:_authToken=${TOKEN}"
+          echo "//registry.npmjs.org/:_authToken=$TOKEN" > ~/.npmrc
+          echo "//registry.npmjs.org/:_authToken=$TOKEN"
 
       - name: Publish to npm
         run: |
