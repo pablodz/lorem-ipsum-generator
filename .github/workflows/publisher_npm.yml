@@ -15,10 +15,11 @@ jobs:
         with:
           bun-version: latest # or "latest", "canary", <sha>
 
-      # run any `bun` or `bunx` command
-      - name: Install and Build
-        run: |
-          bun install npm
-          bun run npm config set registry "https://registry.npmjs.org"
-          bun run npm config set _authToken=${{ secrets.NPM_TOKEN }}
-          bun run npm publish
+      - uses: actions/setup-node@v3
+        with:
+          node-version: "20"
+      - run: npm ci
+      - run: npm test
+      - uses: JS-DevTools/npm-publish@v3
+        with:
+          token: ${{ secrets.NPM_TOKEN }}
