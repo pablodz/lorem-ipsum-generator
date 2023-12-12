@@ -30,7 +30,6 @@
     "clean": "rm -rf dist node_modules",
     "dev": "bunx --bun vite",
     "build": "bunx --bun vite build",
-    "preview": "bunx --bun vite preview",
-    "publish": "bun run npm publish --access public"
+    "preview": "bunx --bun vite preview"
   }
 }
