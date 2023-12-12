@@ -19,6 +19,7 @@
     }
   },
   "dependencies": {
+    "lorem-ipsum": "^2.0.8",
     "vue": "^3.3.8"
   },
   "devDependencies": {
