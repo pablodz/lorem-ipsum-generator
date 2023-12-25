@@ -25,3 +25,8 @@ app.use(LoremIpsumGenerator);
 
 app.mount("#app");
 ```
+
+Usage as component
+```js
+<LoremIpsumGenerator :textLength="14" />
+```
